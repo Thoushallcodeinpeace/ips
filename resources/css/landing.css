@@ -1,0 +1,83 @@
+/* IP & Innovation Management System — landing page styles
+   Loaded by resources/views/welcome.blade.php via {{ asset('css/landing.css') }}
+   Tailwind utility classes are configured inline in the blade file (tailwind.config);
+   everything here is the custom, non-utility CSS the page needs on top of that. */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Side nav: hidden until the hero nav row scrolls out of view */
+#side-nav {
+    position: fixed;
+    left: 1.5rem;
+    top: 50%;
+    z-index: 50;
+    transform: translate(-14px, -50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+#side-nav.nav-visible {
+    transform: translate(0, -50%);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 1023px) {
+    #side-nav {
+        display: none;
+    }
+}
+
+/* Side nav link hover / active effects */
+.side-link-bar {
+    height: 0;
+    transition: height .2s ease;
+}
+
+.side-link-label {
+    transition: transform .2s ease, color .2s ease;
+}
+
+.side-link:hover .side-link-label,
+.side-link.is-active .side-link-label {
+    color: #122B4D;
+    transform: translateX(3px);
+}
+
+.side-link:hover .side-link-bar,
+.side-link.is-active .side-link-bar {
+    height: 1.1rem;
+}
+
+/* Hero nav pill active state */
+.nav-pill {
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.nav-pill.is-active {
+    background-color: #122B4D;
+    color: #F5F8FC;
+    border-color: #122B4D;
+}
+
+/* "What this stage captures" chips */
+.chip {
+    border: 1px solid #D3E1F0;
+    color: #4C6079;
+}
+
+/* Text selection color */
+::selection {
+    background: #2F6FBB;
+    color: #F5F8FC;
+}
